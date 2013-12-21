@@ -534,27 +534,6 @@ var Reveal = (function(){
 
 		var numberOfSlides = document.querySelectorAll( SLIDES_SELECTOR ).length;
 
-                if(config.num){
-                  switch(config.num){
-                    case 1:
-                      dom.wrapper.classList.add("up");
-                      dom.wrapper.classList.add("left");
-                      break;
-                    case 3:
-                      dom.wrapper.classList.add("down");
-                      dom.wrapper.classList.add("left");
-                      break;
-                    case 2:
-                      dom.wrapper.classList.add("up");
-                      dom.wrapper.classList.add("right");
-                      break;
-                    case 4:
-                      dom.wrapper.classList.add("down");
-                      dom.wrapper.classList.add("right");
-                      break;
-                  }
-                  dom.wrapper.classList.add(config.num);
-                }
 
 		dom.wrapper.classList.remove( config.transition );
 
@@ -565,7 +544,25 @@ var Reveal = (function(){
 		// Force linear transition based on browser capabilities
 		if( features.transforms3d === false ) config.transition = 'linear';
 
-		dom.wrapper.classList.add( config.transition );
+                if(config.num && config.transition == 'linear_tv'){
+                  var dir;
+                  switch(config.num){
+                    case 1:
+                      dir='left';
+                      break;
+                    case 2:
+                      dir='right';
+                      break;
+                    case 3:
+                      dir='left';
+                      break;
+                    case 4:
+                      dir='right';
+                      break;
+                  }
+                  config.transition += '_' + dir;
+                }
+                dom.wrapper.classList.add( config.transition );
 
 		dom.wrapper.setAttribute( 'data-transition-speed', config.transitionSpeed );
 		dom.wrapper.setAttribute( 'data-background-transition', config.backgroundTransition );
