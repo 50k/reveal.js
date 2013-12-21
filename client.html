@@ -17,6 +17,7 @@
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 		<link rel="stylesheet" href="clock/css/flipclock.css">
+
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script src="clock/js/flipclock/libs/base.js"></script>
 		<script src="clock/js/flipclock/flipclock.js"></script>
@@ -33,6 +34,24 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+        <style>
+/*
+        .clock-sec {
+          position: relative !important;
+          padding-top: 0px;
+          margin-left: 600px;
+          height:100px;
+          width: 800px;
+                 /zoom: .6;/
+          transform: scale(.54);
+          -ms-transform: scale(.54); /* IE 9 /
+                                     -webkit-transform: scale(.54); / Safari and Chrome /
+                                     -o-transform: scale(.54); / Opera /
+                                     -moz-transform: scale(.54); / Firefox /
+        }
+*/
+        </style>
 	</head>
 
 	<body>
@@ -46,13 +65,13 @@
 					  <h1>Now:</h1>
 					</section>
 					<section>
-					  <h1><div class="clock-hr" style="width=100%; margin:2em;"></div></h1>
+                      <p class="clock-hr" style="zoom: 2.5; -webkit-transform: scale(2.5);margin-left: 300px;"></p>
 					</section>
 					<section>
-					  <div class="clock-min" style="margin:2em;"></div>
+                      <p class="clock-min" style="zoom: 2.5; -webkit-transform: scale(2.5);margin-left: 300px;"></p>
 					</section>
 					<section>
-					  <div class="clock-sec" style="margin:2em;"></div>
+                      <p class="clock-sec" style="zoom: 2.5; -webkit-transform: scale(2.5);margin-left: 300px;"></p>
 					</section>
 				</section>
 
@@ -387,6 +406,7 @@ function linkify( selector ) {
 			    clock_sec = $('.clock-sec').FlipClock({
 			      clockFace: 'Counter'
 			      });
+
 			    setclock();
 			    window.setInterval(setclock, 1000);
 			  });
