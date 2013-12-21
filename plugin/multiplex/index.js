@@ -13,8 +13,9 @@ var opts = {
 	baseDir : __dirname + '/../../'
 };
 
-
-
+app.set('views', __dirname + '/../../views');
+app.set('view engine', 'ejs');
+app.use('/public', express.static(__dirname + '/../../public', {maxAge:0}));
 
 io.set('log level', 1); // reduce logging
 io.sockets.on('connection', function(socket) {
@@ -36,7 +37,7 @@ io.sockets.on('connection', function(socket) {
 });
 
 app.configure(function() {
-	[ 'css', 'js', 'plugin', 'lib' ,'clock'].forEach(function(dir) {
+	['css', 'js', 'plugin', 'lib' ,'clock', 'res'].forEach(function(dir) {
 		app.use('/' + dir, staticDir(opts.baseDir + dir));
 	});
 });
