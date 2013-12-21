@@ -1,22 +1,21 @@
 var express		= require('express');
 var fs			= require('fs');
-var io			= require('socket.io');
+//var io			= require('socket.io');
 var crypto		= require('crypto');
 
-var app			= express.createServer();
-var staticDir	= express.static;
+var app			= express();
+var http = require('http');
+var server= http.createServer(app);
 
-io				= io.listen(app);
+var staticDir	= express.static;
+var io = require('socket.io').listen(server);
 
 var opts = {
 	port: 1947,
 	baseDir : __dirname + '/../../'
 };
 
-
-
-
-io.set('log level', 1); // reduce logging
+//io.set('log level', 1); // reduce logging
 io.sockets.on('connection', function(socket) {
 
 	console.log("connection ");
@@ -77,7 +76,7 @@ var createHash = function(secret) {
 };
 
 // Actually listen
-app.listen(opts.port || null);
+server.listen(opts.port || null);
 
 var brown = '\033[33m',
 	green = '\033[32m',
