@@ -534,6 +534,28 @@ var Reveal = (function(){
 
 		var numberOfSlides = document.querySelectorAll( SLIDES_SELECTOR ).length;
 
+                if(config.num){
+                  switch(config.num){
+                    case 1:
+                      dom.wrapper.classList.add("up");
+                      dom.wrapper.classList.add("left");
+                      break;
+                    case 3:
+                      dom.wrapper.classList.add("down");
+                      dom.wrapper.classList.add("left");
+                      break;
+                    case 2:
+                      dom.wrapper.classList.add("up");
+                      dom.wrapper.classList.add("right");
+                      break;
+                    case 4:
+                      dom.wrapper.classList.add("down");
+                      dom.wrapper.classList.add("right");
+                      break;
+                  }
+                  dom.wrapper.classList.add(config.num);
+                }
+
 		dom.wrapper.classList.remove( config.transition );
 
 		// New config options may be passed when this method
