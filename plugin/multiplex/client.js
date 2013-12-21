@@ -1,5 +1,4 @@
 
-var elem = document.querySelector(document.webkitExitFullscreen ? "#slideels" : "#slideels-container");
 
 (function() {
 
@@ -67,6 +66,7 @@ function getParameterByName(name) {
 }
 
 function enterFullscreen() {
+	var elem = document.querySelector(document.webkitExitFullscreen ? "#slideels" : "#slideels-container");
   console.log("enterFullscreen()");
   //elem.onwebkitfullscreenchange = onFullScreenEnter;
   //elem.onmozfullscreenchange = onFullScreenEnter;
