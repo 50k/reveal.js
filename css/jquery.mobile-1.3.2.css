@@ -2432,7 +2432,7 @@ label.ui-submit { font-size: 16px; line-height: 1.4; font-weight: normal; margin
 .ui-field-contain:last-child { border-bottom-width: 0; }
 .ui-field-contain { max-width: 100%; } /* This prevents horizontal scrollbar in IE7 */
 @media all and (min-width: 28em){
-	.ui-field-contain, .ui-mobile fieldset.ui-field-contain { border-width: 0; padding: 0; margin: 1em 0; }
+	.ui-field-contain, .ui-mobile fieldset.ui-field-contain { border-width: 0; padding: 0; margin: 5px 0; }
 }
 .ui-select { display: block; position: relative; }
 .ui-select select { position: absolute; left: -9999px; top: -9999px; }
@@ -2899,7 +2899,7 @@ div.ui-slider-switch.ui-mini {
 		vertical-align: top;
 		display: inline-block;
 		width: 20%;
-		margin: 0 2% 0 0;
+		margin: 0 1% 0 1%;
 	}
 	.ui-field-contain div.ui-slider {
 		display: inline-block;

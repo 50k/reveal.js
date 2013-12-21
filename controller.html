@@ -23,11 +23,17 @@
 		</iframe>
     </div>
  
- 	<div style="height:10%" data-role="footer" data-position="fixed">
+ 	<div data-role="footer" data-position="fixed">
+ 		 <div data-role="navbar" data-iconpos="bottom">
+ 		 	<div data-role="fieldcontain">
+ 		 		 		<label for="slider-mini" style="width:12%;">Slider rotate interval:</label>
+ 	 					<input type="range" name="slider-mini" id="slider-mini" value="0" min="0" max="5000" data-mini="true" />
+ 	 		</div>
+ 	 	</div>
  	 <div style="height:100%" data-role="navbar" data-iconpos="bottom">
  	 	<ul>
         	<li><a id="to_first" href="#" style="height:100%">To first page</a></li>
-        	<li><a href="#" style="height:100%">    
+        	<li><a href="#">    
         		<select data-native-menu="false" name="select-choice-1" id="select-choice-1">
 			        <option value="0">Jump to...</option>
 			        <option value="1">1</option>
@@ -37,6 +43,7 @@
         	<li><a id='to_last' href="#" style="height:100%">To last page</a></li>
         </ul>
         </div>
+        
     </div>
 	<!--<script src="hammer.js"></script>-->
   	<script>
@@ -48,6 +55,7 @@
   		var page_total = 0;
   		var page_current = 0;
   		
+  		var autoplay_speed = 0;
   		
   		$(function(){
   			$(document).on('touchmove',function(){event.preventDefault();},false);
@@ -80,6 +88,11 @@
         		var to = $('#select-choice-1 option:selected').val();
         		jump_to(to);
         		$('#select-choice-1').selectmenu('close');
+			});
+			
+			$('#slider-mini').on('slidestop', function(){
+				autoplay_speed = ($(this).val());
+				send_cmd('autoplay', autoplay_speed);
 			});
   		});
   		
