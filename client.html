@@ -16,6 +16,11 @@
 
 		<link rel="stylesheet" href="css/reveal.min.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<link rel="stylesheet" href="clock/css/flipclock.css">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="clock/js/flipclock/libs/base.js"></script>
+		<script src="clock/js/flipclock/flipclock.js"></script>
+		<script src="clock/js/flipclock/faces/counter.js"></script>
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -37,11 +42,18 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
+					<section>
+					  <h1>Now:</h1>
+					</section>
+					<section>
+					  <h1><div class="clock-hr" style="width=100%; margin:2em;"></div></h1>
+					</section>
+					<section>
+					  <div class="clock-min" style="margin:2em;"></div>
+					</section>
+					<section>
+					  <div class="clock-sec" style="margin:2em;"></div>
+					</section>
 				</section>
 
 				<section>
@@ -354,6 +366,32 @@ function linkify( selector ) {
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
 
+		<script>
+		      $(document).ready(function() {
+			    var clock_hr;
+			    var clock_min;
+			    var clock_sec;
+			    function setclock(){
+			      var now = new Date();
+			      clock_hr.setValue(now.getHours());
+			      clock_min.setValue(now.getMinutes());
+			      clock_sec.setValue(now.getSeconds());
+			    }
+
+			    clock_hr = $('.clock-hr').FlipClock({
+			      clockFace: 'Counter'
+			      });
+			    clock_min = $('.clock-min').FlipClock({
+			      clockFace: 'Counter'
+			      });
+			    clock_sec = $('.clock-sec').FlipClock({
+			      clockFace: 'Counter'
+			      });
+			    setclock();
+			    window.setInterval(setclock, 1000);
+			  });
+
+		</script>
 		<script>
 
 			// Full list of configuration options available here:
