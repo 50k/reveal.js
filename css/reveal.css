@@ -894,6 +894,77 @@ body {
 	        transform: translate(0, 150%);
 }
 
+/********************************************
+ * LINEAR_TV
+ ********************************************/
+.reveal.linear_tv section,
+.reveal.linear_tv_right section,
+.reveal.linear_tv_left section {
+	-webkit-backface-visibility: hidden;
+	   -moz-backface-visibility: hidden;
+	    -ms-backface-visibility: hidden;
+	        backface-visibility: hidden;
+}
+
+
+.reveal.linear_tv_left .slides>section.past,
+.reveal.linear_tv_left .slides>section>section.past {
+	-webkit-transform: translate(-150%, 0);
+	   -moz-transform: translate(-150%, 0);
+	    -ms-transform: translate(-150%, 0);
+	     -o-transform: translate(-150%, 0);
+	        transform: translate(-150%, 0);
+}
+
+.reveal.linear_tv_right .slides>section.past,
+.reveal.linear_tv_right .slides>section>section.past {
+	-webkit-transform: translate(150%, 0);
+	   -moz-transform: translate(150%, 0);
+	    -ms-transform: translate(150%, 0);
+	     -o-transform: translate(150%, 0);
+	        transform: translate(150%, 0);
+}
+
+.reveal.linear_tv_left .slides>section.future,
+.reveal.linear_tv_left .slides>section>section.future {
+	-webkit-transform: translate(150%, 0);
+	   -moz-transform: translate(150%, 0);
+	    -ms-transform: translate(150%, 0);
+	     -o-transform: translate(150%, 0);
+	        transform: translate(150%, 0);
+}
+
+.reveal.linear_tv_right .slides>section.future,
+.reveal.linear_tv_right .slides>section>section.future {
+	-webkit-transform: translate(-150%, 0);
+	   -moz-transform: translate(-150%, 0);
+	    -ms-transform: translate(-150%, 0);
+	     -o-transform: translate(-150%, 0);
+	        transform: translate(-150%, 0);
+}
+
+
+.reveal.linear_tv .slides>section.past,
+.reveal.linear_tv .slides>section>section.past,
+.reveal .slides>section[data-transition=linear_tv].past,
+.reveal .slides>section>section[data-transition=linear_tv].past {
+	-webkit-transform: translate(0, 150%);
+	   -moz-transform: translate(0, 150%);
+	    -ms-transform: translate(0, 150%);
+	     -o-transform: translate(0, 150%);
+	        transform: translate(0, 150%);
+}
+
+.reveal.linear_tv .slides>section.future,
+.reveal.linear_tv .slides>section>section.future, 
+.reveal .slides>section[data-transition=linear_tv].future,
+.reveal .slides>section>section[data-transition=linear_tv].future {
+	-webkit-transform: translate(0, -150%);
+	   -moz-transform: translate(0, -150%);
+	    -ms-transform: translate(0, -150%);
+	     -o-transform: translate(0, -150%);
+	        transform: translate(0, -150%);
+}
 
 /*********************************************
  * CUBE TRANSITION
