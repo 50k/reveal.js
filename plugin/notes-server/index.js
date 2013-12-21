@@ -15,10 +15,13 @@ var opts = {
 };
 
 io.sockets.on('connection', function(socket) {
+	console.log(">>>>>> connection");
 	socket.on('slidechanged', function(slideData) {
+		console.log("slideData:"+ JSON.stringify(slideData));
 		socket.broadcast.emit('slidedata', slideData);
 	});
 	socket.on('fragmentchanged', function(fragmentData) {
+		socket.broadcast.emit('slidedata', fragmentData);
 		socket.broadcast.emit('fragmentdata', fragmentData);
 	});
 });

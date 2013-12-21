@@ -14,10 +14,11 @@ var opts = {
 };
 
 
+
+
 io.set('log level', 1); // reduce logging
 io.sockets.on('connection', function(socket) {
-	console.log("<<<< connection");
-
+	console.log("connection ");
 	socket.on('slidechanged', function(slideData) {
 		
 		if (typeof slideData.secret == 'undefined' || slideData.secret == null || slideData.secret === '') return;
