@@ -1,12 +1,13 @@
 var express		= require('express');
 var fs			= require('fs');
-var io			= require('socket.io');
 var crypto		= require('crypto');
 
-var app			= express.createServer();
-var staticDir	= express.static;
+var app			= express();
+var http = require('http');
+var server= http.createServer(app);
 
-io				= io.listen(app);
+var staticDir	= express.static;
+var io = require('socket.io').listen(server);
 
 var opts = {
 	port: 1947,
@@ -15,7 +16,7 @@ var opts = {
 
 app.set('views', __dirname + '/../../views');
 app.set('view engine', 'ejs');
-app.use('/public', express.static(__dirname + '/../../public', {maxAge:0}));
+app.use('/', express.static(__dirname + '/../../public', {maxAge:0}));
 
 io.set('log level', 1); // reduce logging
 io.sockets.on('connection', function(socket) {
@@ -44,7 +45,7 @@ app.configure(function() {
 
 app.get("/master", function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
-	fs.createReadStream(opts.baseDir + '/index.html').pipe(res);
+	fs.createReadStream(opts.baseDir + '/master.html').pipe(res);
 });
 
 app.get("/client", function(req, res) {
@@ -57,11 +58,16 @@ app.get("/client", function(req, res) {
 	fs.createReadStream(opts.baseDir + '/client.html').pipe(res);
 });
 
+app.get('/controller', function(req, res) {
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	fs.createReadStream(opts.baseDir + '/controller.html').pipe(res);
+});
+/*
 app.get('/', function(req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
-	fs.createReadStream(opts.baseDir + '/master.html').pipe(res);
+	fs.createReadStream(opts.baseDir + '/public/index.html').pipe(res);
 });
-
+*/
 app.get("/token", function(req,res) {
 	var ts = new Date().getTime();
 	var rand = Math.floor(Math.random()*9999999);
@@ -78,7 +84,7 @@ var createHash = function(secret) {
 };
 
 // Actually listen
-app.listen(opts.port || null);
+server.listen(opts.port || null);
 
 var brown = '\033[33m',
 	green = '\033[32m',
