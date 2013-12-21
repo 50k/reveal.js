@@ -18,7 +18,9 @@ var opts = {
 
 io.set('log level', 1); // reduce logging
 io.sockets.on('connection', function(socket) {
+
 	console.log("connection ");
+
 	socket.on('slidechanged', function(slideData) {
 		
 		if (typeof slideData.secret == 'undefined' || slideData.secret == null || slideData.secret === '') return;
@@ -34,7 +36,7 @@ io.sockets.on('connection', function(socket) {
 });
 
 app.configure(function() {
-	[ 'css', 'js', 'plugin', 'lib' ].forEach(function(dir) {
+	[ 'css', 'js', 'plugin', 'lib' ,'clock'].forEach(function(dir) {
 		app.use('/' + dir, staticDir(opts.baseDir + dir));
 	});
 });
