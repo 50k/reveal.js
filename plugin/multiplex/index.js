@@ -9,14 +9,23 @@ var staticDir	= express.static;
 io				= io.listen(app);
 
 var opts = {
-	port: 1948,
+	port: 1947,
 	baseDir : __dirname + '/../../'
 };
 
+
+io.set('log level', 1); // reduce logging
 io.sockets.on('connection', function(socket) {
+	console.log("<<<< connection");
+
 	socket.on('slidechanged', function(slideData) {
+		
 		if (typeof slideData.secret == 'undefined' || slideData.secret == null || slideData.secret === '') return;
+
 		if (createHash(slideData.secret) === slideData.socketId) {
+			console.log("secret "+slideData.secret);
+			console.log("socketId:"+slideData.socketId +" :: "+ socket.id);
+
 			slideData.secret = null;
 			socket.broadcast.emit(slideData.socketId, slideData);
 		};
@@ -34,10 +43,23 @@ app.get("/", function(req, res) {
 	fs.createReadStream(opts.baseDir + '/index.html').pipe(res);
 });
 
+app.get("/client", function(req, res) {
+	if(typeof(req.query.num) != undefined){
+		console.log(">>>>>>>>>>> page number:"+req.query.num);
+	} else {
+		console.log("client didn't sent anything");
+	}
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	fs.createReadStream(opts.baseDir + '/client.html').pipe(res);
+});
+
 app.get("/token", function(req,res) {
 	var ts = new Date().getTime();
 	var rand = Math.floor(Math.random()*9999999);
 	var secret = ts.toString() + rand.toString();
+
+	console.log("get Token %s %s %s", ts, rand, secret);
+	console.log(">>>>>>:%s", JSON.stringify({secret: secret, socketId: createHash(secret)}));
 	res.send({secret: secret, socketId: createHash(secret)});
 });
 
