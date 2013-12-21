@@ -19,34 +19,32 @@
     </div>
  	
     <div style="height:80%" data-role="content" id="content">
-    	<iframe src="/master" width="100%" height="100%" scrolling="no" align="center" frameborder="0">
+    	<iframe id="slide_frame" src="/master" width="100%" height="100%" scrolling="no" align="center" frameborder="0">
 		</iframe>
     </div>
  
  	<div style="height:10%" data-role="footer" data-position="fixed">
  	 <div style="height:100%" data-role="navbar" data-iconpos="bottom">
  	 	<ul>
-        	<li><a id="to_first" href="#" style="height:100%">第一頁</a></li>
+        	<li><a id="to_first" href="#" style="height:100%">To first page</a></li>
         	<li><a href="#" style="height:100%">    
         		<select data-native-menu="false" name="select-choice-1" id="select-choice-1">
-			        <option value="0">指定跳頁</option>
+			        <option value="0">Jump to...</option>
 			        <option value="1">1</option>
 			        <option value="2">2</option>
-			        <option value="...">這邊會動態</option>
+			        <option value="...">it's dynamic</option>
     			</select></a></li>
-        	<li><a id='to_last' href="#" style="height:100%">最後一頁</a></li>
-        	<!--<button data-role="button" data-icon="gear" data-iconpos="bottom">Settings</button>
-        	-->
+        	<li><a id='to_last' href="#" style="height:100%">To last page</a></li>
         </ul>
         </div>
     </div>
-	<script src="hammer.js"></script>
+	<!--<script src="hammer.js"></script>-->
   	<script>
   	
   	(function($){
   		
   		var url = '';
-  		
+  		var iframe = document.getElementById('slide_frame').contentWindow;
   		var page_total = 0;
   		var page_current = 0;
   		
@@ -55,36 +53,55 @@
   			$(document).on('touchmove',function(){event.preventDefault();},false);
   			$('#to_first').on('click',jump_to_first);
   			$('#to_last').on('click',jump_to_last);
-  			var hammertime = Hammer();
+  			/*var hammertime = Hammer();
   			hammertime.on('tap swipedown swiperight',slide_next);
   			hammertime.on('swipeup swipeleft', slide_previous);
   			hammertime.on('pinchout', function(){
   				$('#status-bar').text('pinchout');
+  			});*/
+  			var sniff;
+  			window.addEventListener('message', function(event){
+  				var resp = JSON.parse(event.data);
+  				$('status-bar').text(resp.value.toString());
+  				if(resp.cmd == 'get_total'){
+  					page_total = resp.value;
+  					update_select();
+  					clearInterval(sniff);
+  				}else{
+  					$('status-bar').text('response error');
+  				}
   			});
+  			
+  			$('iframe').ready(function(){
+  				sniff = setInterval(function(){send_cmd('get_total', 0);}, 100);
+  			});
+  			
+  			$('#select-choice-1').on('change', function () {
+        		var to = $('#select-choice-1 option:selected').val();
+        		jump_to(to);
+        		$('#select-choice-1').selectmenu('close');
+			});
   		});
   		
-  		var slide_previous = function(){
-  			$('#status-bar').text('slide_pre');
-  		};
-  		
-  		var slide_next = function(){
-  			$('#status-bar').text('slide_next');
+  		var send_cmd = function(cmd, value){
+  			var json = {'cmd': cmd ,'value': value};
+  			iframe.postMessage(JSON.stringify(json), '*');
   		};
   		
   		var jump_to_first = function(event){
   			event.preventDefault(); 
-			event.stopPropagation();
-  			jump_to(1);
+			//event.stopPropagation();
+  			jump_to(0);
   		};
   		
   		var jump_to_last = function(event){
   			event.preventDefault(); 
-			event.stopPropagation();
-  			jump_to(section_total);
+			//event.stopPropagation();
+  			jump_to(page_total);
   		};
   		
   		var jump_to = function(no){
-  			
+  			send_cmd('jump_to', no)
   		};
   		
   		var update_select = function(){
@@ -92,11 +109,8 @@
   			for(var i=0; i<page_total; i++){
   				$('#select-choice-1').append('<option value="' + i + '">Option ' + (i+1) + '</option>');
   			}
-  			$('select option[value='+ page_current +']').attr('selected', 'selected');
+  			$('#select-choice-1').selectmenu('refresh');
   		};
-  		
-  		//connection
-  		var responce_handle = [];
   		
   		
   	})(jQuery);
