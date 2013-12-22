@@ -24,7 +24,7 @@
     </div>
  
  	<div data-role="footer" data-position="fixed">
- 		 <div data-role="navbar" data-iconpos="bottom">
+ 		 <div data-role="navbar">
  		 	<ul>
         	<li style="width:12%;"><label for="slider-mini">Slider rotate interval:</label></li>
         	<li style="width:68%;"><input type="range" name="slider-mini" id="slider-mini" value="0" min="0" max="5000" data-mini="true" /></li>
@@ -33,7 +33,7 @@
  	 	</div>
  	 <div style="height:100%" data-role="navbar" data-iconpos="bottom">
  	 	<ul>
-        	<li><a id="to_first" href="#" style="height:100%">To first page</a></li>
+        	<li style="height:100%"><a id="to_first" href="#">To first page</a></li>
         	<li><a href="#">    
         		<select data-native-menu="false" name="select-choice-1" id="select-choice-1">
 			        <option value="0">Jump to...</option>
@@ -41,7 +41,15 @@
 			        <option value="2">2</option>
 			        <option value="...">it's dynamic</option>
     			</select></a></li>
-        	<li><a id="to_last" href="#" style="height:100%">To last page</a></li>
+        	<li style="height:100%"><a id="to_last" href="#" >To last page</a></li>
+        </ul>
+        </div>
+        <div style="height:100%" data-role="navbar">
+ 	 	<ul>
+        	<li><a id="client1" href="#" style="height:100%">Client1 On</a></li>
+        	<li><a id="client2" href="#" style="height:100%">Client2 On</a></li>
+        	<li><a id="client3" href="#" style="height:100%">Client3 On</a></li>
+        	<li><a id="client4" href="#" style="height:100%">Client4 On</a></li>
         </ul>
         </div>
         
@@ -65,6 +73,10 @@
   			$('#to_first').on('click',jump_to_first);
   			$('#to_last').on('click',jump_to_last);
   			$('#toggle_autoplay').on('click',toggle_autoplay);
+  			$('#client1').on('click',function(){toggle_client(1)});
+  			$('#client2').on('click',function(){toggle_client(2)});
+  			$('#client3').on('click',function(){toggle_client(3)});
+  			$('#client4').on('click',function(){toggle_client(4)});
   			/*var hammertime = Hammer();
   			hammertime.on('tap swipedown swiperight',slide_next);
   			hammertime.on('swipeup swipeleft', slide_previous);
@@ -140,7 +152,16 @@
   				$('#toggle_autoplay > span > span').text('Autoplay Off');
   			}
   		};
-  		
+  		var toggle_client = function(i){
+  			var text = $('#client' + i + ' > span > span').text();
+  			if(text.indexOf('Off') != -1){
+  				$('#client' + i + ' > span > span').text(text.replace('Off', 'On'));
+  				send_cmd('client', {'number': i, 'status': true });
+  			}else if(text.indexOf('On') != -1){
+  				$('#client' + i + ' > span > span').text(text.replace('On', 'Off'));
+  				send_cmd('client', {'number': i, 'status': false });
+  			}
+  		};
   	})(jQuery);
   	
   	</script>

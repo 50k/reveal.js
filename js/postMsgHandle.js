@@ -10,6 +10,9 @@ window.addEventListener('message', function(event){
 		
 	}else if(req.cmd == 'autoplay'){
 		Reveal.configure({ autoSlide: req.value });
+		
+	}else if(req.cmd == 'client'){
+		Reveal.setClientDis(req.value.number, req.value.status);
 	}
 });
 
