@@ -15,6 +15,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/d3.css">
+		<link rel="stylesheet" href="css/fullscreen-img.css">
 		<link rel="stylesheet" href="css/theme/default.css" id="theme">
 		<link rel="stylesheet" href="clock/css/flipclock.css">
 
@@ -22,6 +24,7 @@
 		<script src="clock/js/flipclock/libs/base.js"></script>
 		<script src="clock/js/flipclock/flipclock.js"></script>
 		<script src="clock/js/flipclock/faces/counter.js"></script>
+		<script src="/lib/js/d3.v3.js"></script>
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -164,8 +167,8 @@
                     <h1>It?</h1>
                   </section>
 				</section>
+                <!-- 8 -->
 				<section>
-                   <!-- yes reveal.js -->
                   <section>
 					<h1>Reveal.js</h1>
 					<h3>HTML Presentations Made Easy</h3>
@@ -187,7 +190,7 @@
                   </section>
 				</section>
 
-				<!-- Example of nested vertical slides -->
+				<!-- 9 -->
 				<section>
 					<section data-background='/res/monarisa.jpg'>
 					</section>
@@ -208,25 +211,143 @@
 拾穗一詞淵源於舊約聖經，指農民需讓貧苦人撿拾收割後遺留穗粒以求溫飽，而該畫除了描繪3名農婦在金黃色麥田撿拾麥穗情景外，其金黃陽光、彎腰等細節，另外呈現「英雄史詩般的崇高意境」。</p>
 					</section>
 				</section>
+                <!-- 10 -->
+                <section>
+				  <section>
+				    <h2>Data Visualization</h2>
+				    <p>
+				    資料視覺化是資料科學的一個重要功能
+				    </p>
+				    <p>
+				    用電視牆可以有更好的表現效果
+				    </p>
+				    <p>
+				    所有圖表一目了然
+				    </p>
+				  </section>
+				  <section id="d3bar" class="d3chart">
+				  </section>
+				  <section id="d3heat" class="d3chart">
+				  </section>
+				  <section id="d3Line" class="d3chart">
+				  </section>
 
+				</section>
+                <!-- 11 -->
 				<section>
-					<section>
-						<h2>Picture 1 linear</h2>
-						<p>
-						</p>
+					<section data-transition='linear_tv' fullscreen-img="img/1.jpg">
 					</section>
-					<section>
-						<h2>Picture 2 linear</h2>
-						<p></p>
+					<section data-transition='linear_tv' fullscreen-img="img/2.jpg">
 					</section>
-					<section>
-						<h2>Picture 3 linear</h2>
-						<p></p>
+					<section data-transition='linear_tv' fullscreen-img="img/3.jpg">
 					</section>
-					<section>
-						<h2>Picture 4 linear</h2>
-						<p></p>
+					<section data-transition='linear_tv' fullscreen-img="img/4.jpg">
 					</section>
+				</section>
+                <!-- 12 -->
+                <section>
+				  <section>
+                    <p>
+                    <table cellspacing="3">
+                      <tbody>
+                      <tr>
+                        <td colspan="2" style="text-align:center;"><a href="/wiki/File:Katy_Perry_UNICEF_2012.jpg" class="image"><img alt="Katy Perry UNICEF 2012.jpg" src="/res/511px-Katy_Perry_UNICEF_2012.jpg" width="220" height="258" ></a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row" >Birth name</th>
+                        <td class="nickname">Katheryn Elizabeth Hudson</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Born</th>
+                        <td><span style="display:none">(<span class="bday">1984-10-25</span>)</span> October 25, 1984 <span class="noprint ForceAgeToShow">(age&nbsp;29)</span><br>
+                          <a href="/wiki/Santa_Barbara,_California" title="Santa Barbara, California">Santa Barbara, California</a>, U.S.</td>
+                      </tr>
+                      <tr>
+                        <th scope="row"><a href="/wiki/Music_genre" title="Music genre">Genres</a></th>
+                        <td><a href="/wiki/Contemporary_Christian_music" title="Contemporary Christian music">Christian</a>, <a href="/wiki/Dance_music" title="Dance music">dance</a>, <a href="/wiki/Electronic_music" title="Electronic music">electronic</a>, <a href="/wiki/Pop_music" title="Pop music">pop</a>, <a href="/wiki/Rock_music" title="Rock music">rock</a></td>
+                      </tr>
+                      <tr>
+                        <th scope="row" style="text-align:left;">Occupations</th>
+                        <td class="role">Singer, songwriter, actress, businesswoman, philanthropist</td>
+                      </tr>
+                      <tr>
+                        <th scope="row" style="text-align:left;">Instruments</th>
+                        <td class="note">Vocals, guitar, piano</td>
+                      </tr>
+                      <tr>
+                        <th scope="row" style="text-align:left;">Years active</th>
+                        <td>1999–present</td>
+                      </tr>
+                      <tr>
+                        <th scope="row" style="text-align:left;"><a href="/wiki/Record_label" title="Record label">Labels</a></th>
+                        <td><a href="/wiki/Red_Hill_Records" title="Red Hill Records" class="mw-redirect">Red Hill</a>, <a href="/wiki/Island_Records" title="Island Records">Island</a>, <a href="/wiki/Columbia_Records" title="Columbia Records">Columbia</a>, <a href="/wiki/Virgin_Records" title="Virgin Records">Virgin</a>, <a href="/wiki/Capitol_Records" title="Capitol Records">Capitol</a></td>
+                      </tr>
+                      </tbody></table>
+                    </p>
+				  </section>
+				  <section  data-background="/res/Katy-Perry-Teenage-Dream.jpg">
+				    <h2>Firework</h2>
+				    <p>
+				    Do you ever feel like a plastic bag<br>
+				    Drifting through the wind, wanting to start again?<br>
+				    Do you ever feel, feel so paper thin<br>
+				    like a house of cards, one blow from caving in?<br>
+				    </p>
+				    <p>
+				    Do you ever feel already buried deep six feet under?<br>
+				    Scream but no one seems to hear a thing<br>
+				    Do you know that there's still a chance for you<br>
+				    'Cause there's a spark in you?<br>
+				    </p>
+				    <p>
+				    You just gotta ignite the light and let it shine<br>
+				    Just own the night like the 4th of July<br>
+				    </p>
+				    <p>
+				    'Cause, baby, you're a firework<br>
+				    Come on, show 'em what you're worth<br>
+				    Make 'em go "Oh, oh, oh"<br>
+				    As you shoot across the sky-y-y<br>
+				    </p>
+				  </section>
+				  <section>
+				    <video id='firework' width=100% height=100% data-autoplay controls>
+				      <source src='/res/firework.mp4' type="video/mp4">
+				      <source src='/res/firework.webm' type="video/webm">
+				    </video>
+				  </section>
+				  <section>
+				    <p>
+				    Baby, you're a firework<br>
+				    Come on, let your colours burst<br>
+				    Make 'em go "Oh, oh, oh"<br>
+				    You're gonna leave 'em all in awe, awe, awe<br>
+				    </p>
+				    <p>
+				    You don't have to feel like a wasted space<br>
+				    You're original, cannot be replaced<br>
+				    If you only knew what the future holds<br>
+				    After a hurricane comes a rainbow<br>
+				    </p>
+				    <p>
+				    Maybe you reason why all the doors are closed<br>
+				    So you could open one that leads you to the perfect road<br>
+				    Like a lightning bolt, your heart will glow<br>
+				    And when it's time you'll know<br>
+				    </p>
+				    <p>
+				    You just gotta ignite, the light, and let it shine<br>
+				    Just own the night like the 4th of July<br>
+				    </p>
+				    <p>
+				    'Cause baby you're a firework<br>
+				    Come on, show 'em what you're worth<br>
+				    Make 'em go 'Oh, oh, oh'<br>
+				    As you shoot across the sky-y-y<br>
+				    </p>
+				  </section>
+
 				</section>
 
 				<section>
@@ -248,12 +369,10 @@
 						<p></p>
 					</section>
 				</section>
-
 				<section>
 					<h1>THE END</h1>
 					<h3>BY 阿菜小隊</h3>
 				</section>
-
 			</div>
 
 		</div>
@@ -294,8 +413,8 @@
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: false,
-				progress: true,
-				history: true,
+				progress: false,
+				history: false,
 				center: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
