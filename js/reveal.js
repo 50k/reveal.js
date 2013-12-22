@@ -177,7 +177,10 @@ var Reveal = (function(){
 			startCount: 0,
 			captured: false,
 			threshold: 40
-		};
+		},
+		
+		//Array for client disable status
+		client_dis = [true, true, true, true];
 
 	/**
 	 * Starts up the presentation if the client is capable.
@@ -3395,6 +3398,14 @@ var Reveal = (function(){
 			if( 'addEventListener' in window ) {
 				( dom.wrapper || document.querySelector( '.reveal' ) ).removeEventListener( type, listener, useCapture );
 			}
+		},
+		
+		getClientDis: function() {
+			return client_dis;
+		},
+		
+		setClientDis: function(index, value) {
+			client_dis[index-1] = value;
 		}
 	};
 

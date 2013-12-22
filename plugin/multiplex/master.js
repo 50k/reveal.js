@@ -5,6 +5,8 @@
 	var multiplex = Reveal.getConfig().multiplex;
 
 	var socket = io.connect(multiplex.url);
+	
+	var client_dis = Reveal.getClientDis();
 
 	var notify = function( slideElement, indexh, indexv, origin ) {
 		if( typeof origin === 'undefined' && origin !== 'remote' ) {
@@ -31,7 +33,8 @@
 				nextindexh : nextindexh,
 				nextindexv : nextindexv,
 				secret: multiplex.secret,
-				socketId : multiplex.id
+				socketId : multiplex.id,
+				dis : client_dis
 			};
 
 			socket.emit('slidechanged', slideData);
