@@ -78,7 +78,7 @@
 			<div id="slideels" class="slides">
               <!-- 1 -->
 		      <section data-transition='linear_tv'>
-                <h1 onclick='enterFullscreen();'>Reveal-Wall.JS</h1>
+                <h1 onclick='Reveal.enterFullscreen();'>Reveal-Wall.JS</h1>
                 <h3>for Fun</h3>
                 <h3>用笑話取勝</h3>
 		      </section>
@@ -442,7 +442,6 @@
         { src: 'plugin/multiplex/client.js', async: true },
 
         // and if you want speaker notes
-        { src: 'plugin/notes-server/client.js', async: true },
 		
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },

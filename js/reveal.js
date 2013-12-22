@@ -3406,7 +3406,8 @@ var Reveal = (function(){
 		
 		setClientDis: function(index, value) {
 			client_dis[index-1] = value;
-		}
+		},
+		enterFullscreen: enterFullscreen
 	};
 
 })();
