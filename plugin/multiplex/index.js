@@ -48,6 +48,11 @@ app.get("/master", function(req, res) {
 	fs.createReadStream(opts.baseDir + '/master.html').pipe(res);
 });
 
+app.get("/masterview", function(req, res) {
+	res.writeHead(200, {'Content-Type': 'text/html'});
+	fs.createReadStream(opts.baseDir + '/master-view.html').pipe(res);
+});
+
 app.get("/client", function(req, res) {
 	if(typeof(req.query.num) != undefined){
 		console.log(">>>>>>>>>>> page number:"+req.query.num);

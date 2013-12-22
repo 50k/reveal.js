@@ -93,9 +93,8 @@
                 <!-- 10 -->
 				<section>
 					<h2>Embedded D3</h2>
-					<p>
-                      因為 Reveal.JS，我們可以亂加。
-					</p>
+					<p>因為 Reveal.JS，我們可以亂加。</p>
+					<p>說不定其他小組做的Slide也可以加進來..</p>
 				</section>
                 <!-- 11 -->
 				<section>
@@ -151,7 +150,7 @@
 		
 		    multiplex: {
         // Example values. To generate your own, see the socket.io server instructions.
-        secret: '13652805320794272084', // Obtained from the socket.io server. Gives this (the master) control of the presentation
+        secret: null, // Obtained from the socket.io server. Gives this (the master) control of the presentation
         id: '1ea875674b17ca76', // Obtained from socket.io server
         url: location.host //'192.168.2.1:1947' // Location of socket.io server
     },
@@ -163,7 +162,7 @@
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
 		{ src: '//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.10/socket.io.min.js', async: true },
-        { src: 'plugin/multiplex/master.js', async: true },
+        { src: 'plugin/multiplex/client.js', async: true },
 
         // and if you want speaker notes
                                //{ src: 'plugin/notes-server/client.js', async: true },
