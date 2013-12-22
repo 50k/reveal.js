@@ -13,7 +13,7 @@
     </head>
      
   <body> 
- 
+   <div data-role="page">
     <div style="height:10%" data-role="header" data-position="fixed">
 	    <p style="text-align: center;" id="status-bar">Status</p>
     </div>
@@ -25,10 +25,11 @@
  
  	<div data-role="footer" data-position="fixed">
  		 <div data-role="navbar" data-iconpos="bottom">
- 		 	<div data-role="fieldcontain">
- 		 		 		<label for="slider-mini" style="width:12%;">Slider rotate interval:</label>
- 	 					<input type="range" name="slider-mini" id="slider-mini" value="0" min="0" max="5000" data-mini="true" />
- 	 		</div>
+ 		 	<ul>
+        	<li style="width:12%;"><label for="slider-mini">Slider rotate interval:</label></li>
+        	<li style="width:68%;"><input type="range" name="slider-mini" id="slider-mini" value="0" min="0" max="5000" data-mini="true" /></li>
+        	<li style="width:20%;"><a id="toggle_autoplay" href="#" style="height:100%">Autoplay Off</a></li>
+        </ul>
  	 	</div>
  	 <div style="height:100%" data-role="navbar" data-iconpos="bottom">
  	 	<ul>
@@ -40,12 +41,14 @@
 			        <option value="2">2</option>
 			        <option value="...">it's dynamic</option>
     			</select></a></li>
-        	<li><a id='to_last' href="#" style="height:100%">To last page</a></li>
+        	<li><a id="to_last" href="#" style="height:100%">To last page</a></li>
         </ul>
         </div>
         
     </div>
+    </div>
 	<!--<script src="hammer.js"></script>-->
+	
   	<script>
   	
   	(function($){
@@ -61,6 +64,7 @@
   			$(document).on('touchmove',function(){event.preventDefault();},false);
   			$('#to_first').on('click',jump_to_first);
   			$('#to_last').on('click',jump_to_last);
+  			$('#toggle_autoplay').on('click',toggle_autoplay);
   			/*var hammertime = Hammer();
   			hammertime.on('tap swipedown swiperight',slide_next);
   			hammertime.on('swipeup swipeleft', slide_previous);
@@ -92,8 +96,9 @@
 			
 			$('#slider-mini').on('slidestop', function(){
 				autoplay_speed = ($(this).val());
-				send_cmd('autoplay', autoplay_speed);
 			});
+			
+			
   		});
   		
   		var send_cmd = function(cmd, value){
@@ -125,6 +130,16 @@
   			$('#select-choice-1').selectmenu('refresh');
   		};
   		
+  		var toggle_autoplay = function(event){
+			var text = $('#toggle_autoplay > span > span').text();
+  			if(text == 'Autoplay Off'){
+  				send_cmd('autoplay', autoplay_speed);
+  				$('#toggle_autoplay > span > span').text('Autoplay On');
+  			}else if(text == 'Autoplay On'){
+  				send_cmd('autoplay', 0);
+  				$('#toggle_autoplay > span > span').text('Autoplay Off');
+  			}
+  		};
   		
   	})(jQuery);
   	
