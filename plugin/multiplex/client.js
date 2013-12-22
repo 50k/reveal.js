@@ -22,6 +22,24 @@
 		Reveal.slide(data.indexh, (number-1), data.indexf, 'remote');
 		//Reveal.slide(data.indexh, data.indexv, data.indexf, 'remote');
 	});
+	
+	//change a static image to another
+	Reveal.addEventListener("slidechanged", function(event){
+		var v = 0;
+		var h = 0;
+		var src = '';
+		var id = '';
+		var itv;
+		
+		if(Reveal.getIndices().v == v && Reveal.getIndices().h == h){
+			var img = $('#'+ id);
+			itv = setInterval(function(){
+				img.attr('src', src);
+			},10000);
+		}else{
+			clearInterval(itv);
+		}
+	});
 
 /*
     //alert('full screen');
